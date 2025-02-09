@@ -82,7 +82,6 @@
             // 
             // cbbOrderPeople
             // 
-            this.cbbOrderPeople.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbOrderPeople.FormattingEnabled = true;
             this.cbbOrderPeople.Items.AddRange(new object[] {
             "1",

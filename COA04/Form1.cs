@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace COA04
@@ -18,6 +12,7 @@ namespace COA04
         public Form1()
         {
             InitializeComponent();
+            dtpOrderDate.MinDate = DateTime.Now;
             dac = new DAC(record);
         }
 
@@ -51,6 +46,12 @@ namespace COA04
             if (string.IsNullOrWhiteSpace(orderPeople))
             {
                 MessageBox.Show("請選擇人數");
+                return;
+            }
+
+            if (!int.TryParse(orderPeople, out int people))
+            {
+                MessageBox.Show("人數請輸入數字");
                 return;
             }
 
