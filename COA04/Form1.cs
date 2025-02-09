@@ -13,19 +13,27 @@ namespace COA04
     public partial class Form1 : Form
     {
         Dictionary<string, string> record = new Dictionary<string, string>();
+        DAC dac;
 
         public Form1()
         {
             InitializeComponent();
+            dac = new DAC(record);
+        }
 
-            DAC dac = new DAC(record);
-
-            dac.AddOrder(dtpOrderDate.Value, cbbPeople.Text, radIsCashY.Checked);
-
-            foreach (var order in record)
+        private void resetAndDispalyRecord()
+        {
+            lstRecord.Items.Clear();
+            foreach (var item in record)
             {
-                lstResult.Items.Add(order.Key + "-" + order.Value);
+                lstRecord.Items.Add($"{item.Key}：{item.Value}");
             }
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            dac.AddOrder(dtpOrderDate.Value, cbbOrderPeople.Text, radIsPayByCashY.Checked);
+            resetAndDispalyRecord();
         }
     }
 
