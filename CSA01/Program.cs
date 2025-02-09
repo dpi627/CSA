@@ -7,8 +7,8 @@ namespace CSA01
         static void Main(string[] args)
         {
             Console.Write("請輸入信用卡號碼前兩碼: ");
-            var num = Console.ReadLine();
-            Console.WriteLine(num);
+            var first2Code = Console.ReadLine();
+            Console.WriteLine(first2Code);
         }
     }
 }
