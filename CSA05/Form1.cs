@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace CSA05
@@ -23,8 +24,16 @@ namespace CSA05
 
     class DAC
     {
-        public void Regiter(string user, string password)
+        private readonly string _path;
+
+        public DAC(string path)
         {
+            this._path = path;
+        }
+
+        public void Register(string user, string password)
+        {
+            File.AppendAllText(_path, $"{user}|{password}\n");
         }
     }
 }
