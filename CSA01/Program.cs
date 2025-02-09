@@ -55,6 +55,11 @@ namespace CSA01
 
         static bool IsValid(string first2Code)
         {
+            if (first2Code.Length != 2)
+            {
+                return false;
+            }
+
             if (int.TryParse(first2Code, out int code))
             {
                 return code >= 0 && code <= 99;
