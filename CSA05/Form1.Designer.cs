@@ -44,7 +44,7 @@
             this.labTitle.Location = new System.Drawing.Point(210, 84);
             this.labTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labTitle.Name = "labTitle";
-            this.labTitle.Size = new System.Drawing.Size(145, 40);
+            this.labTitle.Size = new System.Drawing.Size(100, 28);
             this.labTitle.TabIndex = 0;
             this.labTitle.Text = "帳號註冊";
             // 
@@ -54,7 +54,7 @@
             this.labAccount.Location = new System.Drawing.Point(61, 147);
             this.labAccount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labAccount.Name = "labAccount";
-            this.labAccount.Size = new System.Drawing.Size(64, 23);
+            this.labAccount.Size = new System.Drawing.Size(43, 16);
             this.labAccount.TabIndex = 1;
             this.labAccount.Text = "帳號：";
             // 
@@ -64,7 +64,7 @@
             this.labPassowrd.Location = new System.Drawing.Point(61, 204);
             this.labPassowrd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labPassowrd.Name = "labPassowrd";
-            this.labPassowrd.Size = new System.Drawing.Size(64, 23);
+            this.labPassowrd.Size = new System.Drawing.Size(43, 16);
             this.labPassowrd.TabIndex = 2;
             this.labPassowrd.Text = "密碼：";
             // 
@@ -72,14 +72,15 @@
             // 
             this.txtUserName.Location = new System.Drawing.Point(132, 144);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(314, 31);
+            this.txtUserName.Size = new System.Drawing.Size(314, 23);
             this.txtUserName.TabIndex = 3;
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(132, 201);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(314, 31);
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(314, 23);
             this.txtPassword.TabIndex = 4;
             // 
             // btnRegister
@@ -90,6 +91,7 @@
             this.btnRegister.TabIndex = 5;
             this.btnRegister.Text = "註冊";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnCancel
             // 
@@ -99,10 +101,11 @@
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 405);
             this.Controls.Add(this.btnCancel);
