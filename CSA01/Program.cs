@@ -8,7 +8,15 @@ namespace CSA01
         {
             Console.Write("請輸入信用卡號碼前兩碼> ");
             var first2Code = Console.ReadLine();
-            Console.WriteLine(first2Code);
+
+            if (IsValid(first2Code))
+            {
+                Console.WriteLine(GetBank(first2Code) + GetArea(first2Code));
+            }
+            else
+            {
+                Console.WriteLine("輸入格式錯誤，請輸入兩位數字。");
+            }
         }
 
         static string GetBank(string first2Code)
