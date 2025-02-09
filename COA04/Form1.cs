@@ -20,9 +20,11 @@ namespace COA04
 
             DAC dac = new DAC(record);
 
+            dac.AddOrder(dtpOrderDate.Value, cbbPeople.Text, radIsCashY.Checked);
+
             foreach (var order in record)
             {
-                lstResult.Items.Add(order.Key + " : " + order.Value);
+                lstResult.Items.Add(order.Key + "-" + order.Value);
             }
         }
     }
@@ -41,6 +43,16 @@ namespace COA04
             string orderKey = orderDate.ToString("yyyy年MM月dd日");
             string orderValue = $"{orderPeople} 付現：{(isPayByCash ? "是" : "否")}";
             _orders.Add(orderKey, orderValue);
+        }
+
+        public bool IsExistOrder(string orderKey)
+        {
+            return _orders.ContainsKey(orderKey);
+        }
+
+        public void RemoveOrder(string orderKey)
+        {
+            _orders.Remove(orderKey);
         }
     }
 }
