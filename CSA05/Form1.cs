@@ -35,21 +35,41 @@ namespace CSA05
         }
     }
 
+    /// <summary>
+    /// 資料處理類別
+    /// </summary>
     class DAC
     {
+        /// <summary>
+        /// 檔案路徑
+        /// </summary>
         private readonly string _path;
 
+        /// <summary>
+        /// 初始化資料處理類別
+        /// </summary>
+        /// <param name="path">檔案路徑</param>
         public DAC(string path = "users.txt")
         {
             this._path = path;
         }
 
-        public void Register(string user, string password)
+        /// <summary>
+        /// 註冊並加密密碼
+        /// </summary>
+        /// <param name="userName">使用者名稱</param>
+        /// <param name="password">使用者密碼</param>
+        public void Register(string userName, string password)
         {
             string encryptedPassword = EncryptPassword(password);
-            File.AppendAllText(_path, $"{user}|{encryptedPassword}\n");
+            File.AppendAllText(_path, $"{userName}|{encryptedPassword}\n");
         }
 
+        /// <summary>
+        /// 使用 SHA256 加密密碼
+        /// </summary>
+        /// <param name="password">密碼</param>
+        /// <returns>加密後的密碼(十六進制)</returns>
         private string EncryptPassword(string password)
         {
             using (SHA256 sha256Hash = SHA256.Create())
