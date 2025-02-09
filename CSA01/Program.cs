@@ -9,16 +9,17 @@ namespace CSA01
             while (true)
             {
                 Console.Write("請輸入信用卡號碼前兩碼> ");
-                var first2Code = Console.ReadLine();
-
-                if (IsValid(first2Code))
+                string input = Console.ReadLine();
+                string output;
+                if (IsValid(input))
                 {
-                    Console.WriteLine(GetBank(first2Code) + GetArea(first2Code));
+                    output = GetBank(input) + GetArea(input);
                 }
                 else
                 {
-                    Console.WriteLine("輸入格式錯誤，請輸入兩位數字。");
+                    output = "輸入錯誤，請重新輸入";
                 }
+                Console.WriteLine($"{output}{Environment.NewLine}");
             }
         }
 
