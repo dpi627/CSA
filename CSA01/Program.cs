@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSA01
 {
@@ -10,6 +6,9 @@ namespace CSA01
     {
         static void Main(string[] args)
         {
+            Console.Write("請輸入信用卡號碼前兩碼: ");
+            var num = Console.ReadLine();
+            Console.WriteLine(num);
         }
     }
 }
