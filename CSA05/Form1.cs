@@ -18,8 +18,14 @@ namespace CSA05
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtUserName.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("請確實輸入帳號密碼");
+                return;
+            }
+
             _dac.Register(txtUserName.Text, txtPassword.Text);
-            MessageBox.Show("註冊成功");
+            MessageBox.Show("註冊成功！");
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
