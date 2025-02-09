@@ -17,21 +17,30 @@ namespace COA04
         public Form1()
         {
             InitializeComponent();
+
+            DAC dac = new DAC(record);
+
+            foreach (var order in record)
+            {
+                lstResult.Items.Add(order.Key + " : " + order.Value);
+            }
         }
     }
 
     public class DAC
     {
-        private Dictionary<string, string> _record;
+        private Dictionary<string, string> _orders;
 
-        public DAC(Dictionary<string, string> record)
+        public DAC(Dictionary<string, string> orders)
         {
-            this._record = record;
+            this._orders = orders;
         }
 
-        public void Add(string key, string value)
+        public void AddOrder(DateTime orderDate, string orderPeople, bool isPayByCash)
         {
-            _record.Add(key, value);
+            string orderKey = orderDate.ToString("yyyy年MM月dd日");
+            string orderValue = $"{orderPeople} 付現：{(isPayByCash ? "是" : "否")}";
+            _orders.Add(orderKey, orderValue);
         }
     }
 }
