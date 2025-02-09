@@ -12,9 +12,26 @@ namespace COA04
 {
     public partial class Form1 : Form
     {
+        Dictionary<string, string> record = new Dictionary<string, string>();
+
         public Form1()
         {
             InitializeComponent();
+        }
+    }
+
+    public class DAC
+    {
+        private Dictionary<string, string> _record;
+
+        public DAC(Dictionary<string, string> record)
+        {
+            this._record = record;
+        }
+
+        public void Add(string key, string value)
+        {
+            _record.Add(key, value);
         }
     }
 }
