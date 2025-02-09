@@ -6,16 +6,19 @@ namespace CSA01
     {
         static void Main(string[] args)
         {
-            Console.Write("請輸入信用卡號碼前兩碼> ");
-            var first2Code = Console.ReadLine();
+            while (true)
+            {
+                Console.Write("請輸入信用卡號碼前兩碼> ");
+                var first2Code = Console.ReadLine();
 
-            if (IsValid(first2Code))
-            {
-                Console.WriteLine(GetBank(first2Code) + GetArea(first2Code));
-            }
-            else
-            {
-                Console.WriteLine("輸入格式錯誤，請輸入兩位數字。");
+                if (IsValid(first2Code))
+                {
+                    Console.WriteLine(GetBank(first2Code) + GetArea(first2Code));
+                }
+                else
+                {
+                    Console.WriteLine("輸入格式錯誤，請輸入兩位數字。");
+                }
             }
         }
 
