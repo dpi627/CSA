@@ -18,7 +18,6 @@ namespace CSA05
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
         }
     }
 
@@ -26,7 +25,7 @@ namespace CSA05
     {
         private readonly string _path;
 
-        public DAC(string path)
+        public DAC(string path = "users.txt")
         {
             this._path = path;
         }
