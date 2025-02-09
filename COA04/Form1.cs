@@ -6,29 +6,34 @@ namespace COA04
 {
     public partial class Form1 : Form
     {
-        Dictionary<string, string> record = new Dictionary<string, string>();
+        Dictionary<string, string> records = new Dictionary<string, string>();
         DAC dac;
 
         public Form1()
         {
             InitializeComponent();
-            dtpOrderDate.MinDate = DateTime.Now;
-            dac = new DAC(record);
+            dac = new DAC(records);
         }
 
-        private void resetAndDispalyRecord()
+        private void ResetAndDispalyRecord()
         {
             lstRecord.Items.Clear();
-            foreach (var item in record)
+            foreach (var record in records)
             {
-                lstRecord.Items.Add($"{item.Key}-{item.Value}");
+                lstRecord.Items.Add($"{record.Key}-{record.Value}");
             }
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
             dac.AddOrder(dtpOrderDate.Value, cbbOrderPeople.Text, radIsPayByCashY.Checked);
-            resetAndDispalyRecord();
+            ResetAndDispalyRecord();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            dac.RemoveOrder(dtpOrderDate.Value);
+            ResetAndDispalyRecord();
         }
     }
 
@@ -57,7 +62,7 @@ namespace COA04
 
             string orderKey = orderDate.ToString("yyyy年MM月dd日");
 
-            if (IsExistOrder(orderKey))
+            if (IsOrderExist(orderKey))
             {
                 MessageBox.Show("資料已經存在無法預訂");
                 return;
@@ -68,14 +73,24 @@ namespace COA04
             MessageBox.Show("訂房完成");
         }
 
-        public bool IsExistOrder(string orderKey)
+        public bool IsOrderExist(string orderKey)
         {
             return _orders.ContainsKey(orderKey);
         }
 
-        public void RemoveOrder(string orderKey)
+        public void RemoveOrder(DateTime orderDate)
         {
+            string orderKey = orderDate.ToString("yyyy年MM月dd日");
+
+            if (!IsOrderExist(orderKey))
+            {
+                MessageBox.Show("查無紀錄");
+                return;
+            }
+
             _orders.Remove(orderKey);
+
+            MessageBox.Show("取消訂單完成");
         }
     }
 }
