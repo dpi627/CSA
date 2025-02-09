@@ -18,6 +18,8 @@ namespace CSA05
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            txtUserName.Text = "";
+            txtPassword.Text = "";
         }
     }
 
