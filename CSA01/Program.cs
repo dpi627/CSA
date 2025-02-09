@@ -6,7 +6,7 @@ namespace CSA01
     {
         static void Main(string[] args)
         {
-            Console.Write("請輸入信用卡號碼前兩碼: ");
+            Console.Write("請輸入信用卡號碼前兩碼> ");
             var first2Code = Console.ReadLine();
             Console.WriteLine(first2Code);
         }
@@ -43,6 +43,15 @@ namespace CSA01
             {
                 return "";
             }
+        }
+
+        static bool IsValid(string first2Code)
+        {
+            if (int.TryParse(first2Code, out int code))
+            {
+                return code >= 0 && code <= 99;
+            }
+            return false;
         }
     }
 }
