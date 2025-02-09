@@ -11,7 +11,7 @@ namespace CSA01
             Console.WriteLine(first2Code);
         }
 
-        static string GetBankName(string first2Code)
+        static string GetBank(string first2Code)
         {
             switch (first2Code)
             {
@@ -25,6 +25,23 @@ namespace CSA01
                     return "此卡片為VISA信用卡";
                 default:
                     return "非本店特約用戶";
+            }
+        }
+
+        static string GetArea(string first2Code)
+        {
+            int code = int.Parse(first2Code);
+            if (code >= 30 && code <= 39)
+            {
+                return "(大中華區)";
+            }
+            else if (code >= 40 && code <= 49)
+            {
+                return "(歐美地區)";
+            }
+            else
+            {
+                return "";
             }
         }
     }
