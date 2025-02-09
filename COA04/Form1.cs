@@ -26,7 +26,7 @@ namespace COA04
             lstRecord.Items.Clear();
             foreach (var item in record)
             {
-                lstRecord.Items.Add($"{item.Key}：{item.Value}");
+                lstRecord.Items.Add($"{item.Key}-{item.Value}");
             }
         }
 
@@ -39,7 +39,7 @@ namespace COA04
 
     public class DAC
     {
-        private Dictionary<string, string> _orders;
+        private readonly Dictionary<string, string> _orders;
 
         public DAC(Dictionary<string, string> orders)
         {
@@ -48,9 +48,23 @@ namespace COA04
 
         public void AddOrder(DateTime orderDate, string orderPeople, bool isPayByCash)
         {
+            if (string.IsNullOrWhiteSpace(orderPeople))
+            {
+                MessageBox.Show("請選擇人數");
+                return;
+            }
+
             string orderKey = orderDate.ToString("yyyy年MM月dd日");
+
+            if (IsExistOrder(orderKey))
+            {
+                MessageBox.Show("資料已經存在無法預訂");
+                return;
+            }
+
             string orderValue = $"{orderPeople} 付現：{(isPayByCash ? "是" : "否")}";
             _orders.Add(orderKey, orderValue);
+            MessageBox.Show("訂房完成");
         }
 
         public bool IsExistOrder(string orderKey)
